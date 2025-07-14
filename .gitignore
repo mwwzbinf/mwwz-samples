@@ -1,0 +1,7 @@
+/.vs/
+/x64/
+/Debug/
+/Release/
+/install/lib/opencv_world450d.lib
+/install/bin/opencv_world450d.dll
+/opencv_world450d.dll
