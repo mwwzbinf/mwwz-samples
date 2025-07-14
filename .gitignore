@@ -5,3 +5,4 @@
 /install/lib/opencv_world450d.lib
 /install/bin/opencv_world450d.dll
 /opencv_world450d.dll
+*.pdb

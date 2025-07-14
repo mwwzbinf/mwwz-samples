@@ -12,7 +12,7 @@ namespace mwwz
 	extern "C" {
 #endif
 
-	struct /*alignas(32)*/ Match
+	struct MWWZ_API Match
 	{
 		Match()
 		{
@@ -85,7 +85,7 @@ namespace mwwz
 		dy = 0;
 	}
 
-	struct /*alignas(32)*/ Feature
+	struct MWWZ_API Feature
 	{
 		float x;
 		float y;
@@ -201,7 +201,7 @@ namespace mwwz
 	MWWZ_API int write_shape_model_b(int model_id, char*& pModel, int& len);
 	MWWZ_API int read_shape_model_b(char* pModel, int len, int& model_id);
 	MWWZ_API int get_rot_img(unsigned char* pGray, int w, int h, int method, double xc, double yc, double angle, unsigned char* pDst, int w2, int h2);
-	//MWWZ_API void auto_shape_model_params(unsigned char* pGray, int w, int h, double ratio, double* T);
+	MWWZ_API void auto_shape_model_params(unsigned char* pGray, int w, int h, double ratio, double* T);
 
 	MWWZ_API int create_shape_model(unsigned char* pGray, int w, int h, int num_levels, float angle_start, float angle_extent, float angle_step, int use_polarity, int* contrast, unsigned char* pMask, int& model_id);
 	MWWZ_API int create_shape_model_rr(unsigned char* pGray, int w, int h, double xc, double yc, double angle, double len1, double len2, int num_levels, float angle_start, float angle_extent, float angle_step, int use_polarity, int* contrast, unsigned char* pMask, int& model_id);

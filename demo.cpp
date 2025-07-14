@@ -3239,9 +3239,9 @@ int main()
 {
 	//(1)shape match
 	//test();
-	//test2();
+	test2();
 	//test3();
-	test4();
+	//test4();
 	//test15();
 	//test17();
 	//test18();

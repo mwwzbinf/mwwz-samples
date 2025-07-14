@@ -12,7 +12,7 @@ namespace mwwz
 	extern "C" {
 #endif
 
-		struct chord
+		struct MWWZ_API chord
 		{
 			/*int lb;*/
 			int cb, ce, r, lb;
@@ -38,23 +38,27 @@ namespace mwwz
 			int* r;
 			int* cb;
 			int* ce;
+			int rect[4];
+			double rrect[5];
+			double ellipse[3];
 #else
 			std::vector<int> r;
 			std::vector<int> cb;
 			std::vector<int> ce;
-#endif
-			std::vector<chord> runs;
 			std::vector<int> rect;
 			std::vector<double> rrect;
 			std::vector<double> ellipse;
-
+#endif
 			long area;
+			double cx;
+			double cy;
 			double circularity;
 			int imgWidth;
 			int imgHeight;
 			long  obj_count;//连通区域个数 -1, 0单个, >0多个
 			region** regions;
 
+			std::vector<chord> runs;
 			void to_3();
 			void to_1();
 		private:
