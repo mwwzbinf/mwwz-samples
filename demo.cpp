@@ -338,10 +338,10 @@ int test2()
 	double angle_step = 0;
 	double scale_step = 0;
 
-	int contrast_low = 10;
-	int contrast_high = 15;
-	int min_cont_len = 30;
-	int min_contrast = 10;
+	int contrast_low = 33;
+	int contrast_high = 44;
+	int min_cont_len = 9;
+	int min_contrast = 6;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
 
 	int num_levels = 0;
@@ -411,7 +411,7 @@ int test2()
 	imshow("src", src);
 
 	//寻找模板
-	int subpixel = 1;
+	int subpixel = 2;
 	double scale_min = 0.5;
 	double scale_max = 1.5;
 	double minScore = 0.50;
@@ -424,12 +424,13 @@ int test2()
 		std::cout << "scale min < max" << endl;
 		return -1;
 	}
-	set_shape_model_param(model_id, "metric", 0);//忽略极性
+	set_shape_model_param(model_id, "metric", -1);//忽略极性
 
 	int numLevels[2] = { 0 };
 	int mem_id = 0;
 	int nFound = 0;
 	Match* pMatches = NULL;
+	auto start = std::chrono::high_resolution_clock::now();
 	if (abs(scale_min - 1) < DBL_EPSILON && abs(scale_max - 1) < DBL_EPSILON)
 	{
 		mem_id = find_shape_model(src.ptr<uchar>(0), src.cols, src.rows, model_id, angle_start, angle_extent, minScore, numMatches, maxOverLap, subpixel, numLevels, greedness, pMatches, nFound);
@@ -438,6 +439,9 @@ int test2()
 	{
 		mem_id = find_scaled_shape_model(src.ptr<uchar>(0), src.cols, src.rows, model_id, angle_start, angle_extent, scale_min, scale_max, minScore, numMatches, maxOverLap, subpixel, numLevels, greedness, pMatches, nFound);
 	}
+	auto end = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+	std::cout << "elapsed time: " << duration.count() << " ms" << std::endl;
 	if (mem_id < 0)
 	{
 		std::cout << "find shape model failed" << endl;
@@ -693,8 +697,8 @@ int test4()
 
 	//寻找模板
 	int subpixel = 2;
-	double scale_min = 0.5;
-	double scale_max = 1.5;
+	double scale_min = 0.3;
+	double scale_max = 2.0;
 	double minScore = 0.70;
 	double maxOverLap = 0.50;
 	double greedness = 0.75;
@@ -712,7 +716,11 @@ int test4()
 	int mem_id = 0;
 	int nFound = 0;
 	Match* pMatches = NULL;
+	auto start = std::chrono::high_resolution_clock::now();
 	mem_id = find_aniso_shape_model(src.ptr<uchar>(0), src.cols, src.rows, model_id, angle_start, angle_extent, scale_min, scale_max, scale_min, scale_max, minScore, numMatches, maxOverLap, subpixel, numLevels, greedness, pMatches, nFound);
+	auto end = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+	std::cout << "elapsed time: " << duration.count() << " ms" << std::endl;
 	if (mem_id < 0)
 	{
 		std::cout << "find shape model failed" << endl;
@@ -1903,10 +1911,10 @@ int test14()
 	double angle_step = 0;
 	double scale_step = 0;
 
-	int contrast_low = 15;
-	int contrast_high = 22;
-	int min_cont_len = 10;
-	int min_contrast = 5;
+	int contrast_low = 23;
+	int contrast_high = 31;
+	int min_contrast = 13;
+	int min_cont_len = 9;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
 
 	int num_levels = 0;
@@ -1945,7 +1953,7 @@ int test14()
 	imshow("src", src);
 
 	//寻找模板
-	int subpixel = 0;
+	int subpixel = 2;
 	double minScore = 0.50;
 	double maxOverLap = 0.50;
 	double greedness = 0.75;
@@ -3231,8 +3239,9 @@ int main()
 {
 	//(1)shape match
 	//test();
+	//test2();
 	//test3();
-	test14();
+	test4();
 	//test15();
 	//test17();
 	//test18();
