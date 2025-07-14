@@ -1955,7 +1955,11 @@ int test14()
 	
 	int nFound = 0;
 	Match* pMatches = NULL;
+	auto start = std::chrono::high_resolution_clock::now();
 	int	mem_id = find_shape_models(src.ptr<uchar>(0), src.cols, src.rows, &models[0], model_num, angle_start, angle_extent, minScore, numMatches, maxOverLap, subpixel, &vnum_levels[0], greedness, pMatches, nFound);
+	auto end = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+	std::cout << "elapsed time: " << duration.count() << " ms" << std::endl;
 	if (mem_id < 0)
 	{
 		std::cout << "find shape models failed" << endl;
