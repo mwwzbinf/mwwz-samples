@@ -2716,10 +2716,10 @@ Mat paint_region(const mwwz::region& regIn, int width, int height, Vec3b color =
 				rmax = max(rmax, regIn.r[i]);
 			}
 		}
-		else if (regIn.runs.size() > 0)
+		else if (regIn.num_runs > 0)
 		{
-			const std::vector<mwwz::chord>& runs = regIn.runs;
-			for (int i = 0; i < runs.size(); i++)
+			const chord* runs = regIn.runs;
+			for (int i = 0; i < regIn.num_runs; i++)
 			{
 				const mwwz::chord& run = runs[i];
 				cmin = min(cmin, run.cb);
@@ -2752,10 +2752,10 @@ Mat paint_region(const mwwz::region& regIn, int width, int height, Vec3b color =
 			}
 		}
 	}
-	else if (regIn.runs.size() > 0)
+	else if (regIn.num_runs > 0)
 	{
-		const std::vector<mwwz::chord>& runs = regIn.runs;
-		for (int i = 0; i < runs.size(); i++)
+		const chord* runs = regIn.runs;
+		for (int i = 0; i < regIn.num_runs; i++)
 		{
 			const mwwz::chord& run = runs[i];
 			for (int j = run.cb; j <= run.ce; j++)

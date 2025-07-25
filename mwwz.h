@@ -96,7 +96,7 @@ namespace mwwz
 	};
 	inline Feature::Feature(float _x, float _y, float _nx, float _ny) : x(_x), y(_y), nx(_nx), ny(_ny) {}
 
-	struct FeatureI
+	struct MWWZ_API FeatureI
 	{
 		int x;
 		int y;
