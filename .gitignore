@@ -6,4 +6,4 @@
 /install/bin/opencv_world450d.dll
 /opencv_world450d.dll
 *.pdb
-/*.png
+# /*.png
