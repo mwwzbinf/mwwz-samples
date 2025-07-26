@@ -13,8 +13,8 @@
 2. Measuring
 3. Region morphology
 
-![alt text](pic/QQ_1752478156450.png)
-![alt text](pic/QQ_1752478496172.png)
-![alt text](pic/QQ_1752478796564.png)
-![alt text](pic/QQ_1752479045488.png)
-![alt text](pic/QQ_1752498816872.png)
+<img width="975" height="787" alt="QQ_1752478156450" src="https://github.com/user-attachments/assets/3e3a0025-7f40-40c6-9fa7-fd21542ffd17" />
+<img width="908" height="675" alt="QQ_1752478496172" src="https://github.com/user-attachments/assets/98940724-aa3e-4b7d-92f8-22f24b53c930" />
+<img width="1042" height="706" alt="QQ_1752478796564" src="https://github.com/user-attachments/assets/c18b65a7-8643-4ffa-b4a1-7d68a9422f55" />
+<img width="1158" height="743" alt="QQ_1752479045488" src="https://github.com/user-attachments/assets/fb2b7390-4068-41b8-a88e-6f3afd16d334" />
+<img width="890" height="556" alt="QQ_1752498816872" src="https://github.com/user-attachments/assets/03e0fc80-69af-4a0b-a522-41afc1d85d78" />
