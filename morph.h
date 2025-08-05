@@ -1,7 +1,8 @@
 #pragma once
 #include"apiExport.h"
 
-#define max_run_length 360000
+//#define max_run_length 360000
+#define max_run_length 2000
 #define rle_represented_with_pointer
 
 #ifdef MWWZ_CPLUSPLUS
@@ -33,7 +34,7 @@ namespace mwwz
 			region(const region& Region);
 			region& operator=(region const& Region);
 
-			int len;
+			size_t  len;
 #if defined(rle_represented_with_pointer)
 			int* r;
 			int* cb;
@@ -63,8 +64,13 @@ namespace mwwz
 
 			void to_3();
 			void to_1();
+			size_t capacity() const { return m_capacity; }// 当前容量
+			void reserve(size_t N);
+			void update(size_t C);
+			void expand();
 		private:
 			unsigned* refCount;//引用计数
+			size_t m_capacity;
 		};
 
 		MWWZ_API void gen_region_runs2(region* regRes, int* r, int* cb, int* ce, int n);
