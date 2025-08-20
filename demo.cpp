@@ -2487,6 +2487,59 @@ int test18()
 	return 0;
 }
 
+//auto_shape_model_params
+int test19()
+{
+	init_mwwz();
+	Mat model = imread(img_dir + "1.png", IMREAD_GRAYSCALE);
+	if (model.empty())
+	{
+		std::cout << "model empty" << endl;
+		return -1;
+	}
+	imshow("model", model);
+
+	//创建模板
+	double angle_start = 0;
+	double angle_extent = 360;
+	double angle_step = 0;
+	double scale_step = 0;
+
+	int contrast_low = 19;
+	int contrast_high = 26;
+	int min_cont_len = 17;
+	int min_contrast = 7;
+	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
+
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
+
+	int num_levels = 0;
+	int use_polarity = 1;
+
+	int model_id = -1;
+	int err = create_shape_model(model.ptr<uchar>(0), model.cols, model.rows, num_levels, angle_start, angle_extent, angle_step, use_polarity, contrast, NULL, model_id);
+
+	//create model failed
+	if (model_id < 0)
+	{
+		std::cout << "create shape model failed" << endl;
+		return -1;
+	}
+
+	//显示模板特征点
+	Mat modelRgb;
+	cvtColor(model, modelRgb, COLOR_GRAY2RGB);
+	ShowFeatures(modelRgb, model_id);
+	namedWindow("features", 0);
+	imshow("features", modelRgb);
+	waitKey();
+
+	return 0;
+}
+
 #if defined(INCLUDE_MEAS)
 #include"./meas.h"
 void draw_rrect(Mat& img, RRect rr)
@@ -3239,12 +3292,13 @@ int main()
 {
 	//(1)shape match
 	//test();
-	test2();
+	//test2();
 	//test3();
 	//test4();
 	//test15();
 	//test17();
 	//test18();
+	test19();
 
 	//(2)measurement
 	//test20();
