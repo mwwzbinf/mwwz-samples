@@ -26,7 +26,7 @@
 #endif
 #elif __linux__
 // linux
-#define MWWZ_API
+#define MWWZ_API __attribute__((visibility("default")))
 #elif __unix__ // all unices not caught above
 // Unix
 #elif defined(_POSIX_VERSION)

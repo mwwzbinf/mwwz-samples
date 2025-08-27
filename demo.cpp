@@ -2410,6 +2410,11 @@ int test18()
 	int min_contrast = 5;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
 
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	auto_shape_model_params(vModel[0].ptr<uchar>(0), vModel[0].cols, vModel[0].rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
+
 	int num_levels = 0;
 	int use_polarity = 1;
 
@@ -2465,7 +2470,12 @@ int test18()
 	int mem_id = 0;
 	int nFound = 0;
 	Match* pMatches = NULL;
+
+	auto start = std::chrono::high_resolution_clock::now();
 	mem_id = find_shape_models_xl(src.ptr<uchar>(0), src.cols, src.rows, div, &models[0], model_num, angle_start, angle_extent, minScore, numMatches, maxOverLap, subpixel, numLevels, greedness, 2.5f, pMatches, nFound);
+	auto end = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end - start);
+	std::cout << "elapsed time: " << duration.count() << " ms" << std::endl;
 
 	if (mem_id < 0)
 	{
@@ -3295,10 +3305,11 @@ int main()
 	//test2();
 	//test3();
 	//test4();
+	test14();
 	//test15();
 	//test17();
 	//test18();
-	test19();
+	//test19();
 
 	//(2)measurement
 	//test20();
