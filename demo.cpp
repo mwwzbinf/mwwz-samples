@@ -3300,6 +3300,8 @@ void test_hit_or_miss()
 
 int main()
 {
+	/*for (size_t i = 0; i < 100000; i++)
+		test();*/
 	//(1)shape match
 	//test();
 	//test2();
@@ -3320,7 +3322,7 @@ int main()
 	//test_difference();
 	//test_intersection();
 	//test_connection();
-	//test_erosion();
+	test_erosion();
 	//test_dilation();
 	//test_opening();
 	//test_closing();
