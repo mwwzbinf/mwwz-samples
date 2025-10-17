@@ -2743,6 +2743,61 @@ void test_circle_detector()
 	waitKey();
 }
 
+void test_ellipse_detector()
+{
+	Mat src = imread(img_dir + "ellipse.jpg", IMREAD_GRAYSCALE);
+	assert(!src.empty());
+	Mat srcRgb, srcRgb2;;
+	cvtColor(src, srcRgb, COLOR_GRAY2RGB);
+	cvtColor(src, srcRgb2, COLOR_GRAY2RGB);
+	imshow("src", srcRgb);
+
+	double xc = 559;
+	double yc = 422;
+	double angle = 29.3578;
+	double ra = 403.866;
+	double rb = 232.321;
+
+	int aw = 10;
+	line(srcRgb, Point2f(xc - aw, yc), Point2f(xc + aw, yc), Scalar(0, 0, 255), 2);
+	line(srcRgb, Point2f(xc, yc - aw), Point2f(xc, yc + aw), Scalar(0, 0, 255), 2);
+	ellipse(srcRgb, Point2f(xc, yc), Size(ra, rb), -angle, 0, 360, Scalar(0, 255, 0), 2);
+
+	int dir = 1;
+	int distr = 0;
+	double len1 = 40;
+	double len2 = 10;
+	RRect* pRr;
+	int num = 0;
+	int mem_id = gen_measure_ellipse(xc, yc, angle, ra, rb, len1, len2, dir, distr, pRr, num);
+
+	double sigma = 1;
+	double thr = 30;
+	double* points;
+	int num2 = 0;
+	int mem_id2 = do_measure(src.data, src.cols, src.rows, sigma, thr, "first+", pRr, num, points, num2);
+
+	double ab[5];
+	int err_code = do_fit(points, num2, 2, 7, 2, 20, 2, ab);
+
+	printf("num1 = %2d, num2 = %2d\n", num, num2);
+	printf("mem_id = %3d, mem_id2 = %3d, err_code = %3d\n", mem_id, mem_id2, err_code);
+
+	for (int i = 0; i < num; i++) draw_rrect(srcRgb, pRr[i]);
+	for (int i = 0; i < num2; i++)
+	{
+		line(srcRgb2, Point2f(points[i] - aw, points[i + num2] - aw), Point2f(points[i] + aw, points[i + num2] + aw), Scalar(255, 0, 255), 1);
+		line(srcRgb2, Point2f(points[i] - aw, points[i + num2] + aw), Point2f(points[i] + aw, points[i + num2] - aw), Scalar(255, 0, 255), 1);
+	}
+	cv::ellipse(srcRgb2, Point2f(ab[0], ab[1]), Size(ab[3], ab[4]), -ab[2], 0, 360, Scalar(255, 255, 0), 1);
+
+	clear_mems(mem_id);
+	clear_mems(mem_id2);
+	imshow("src", srcRgb);
+	imshow("result", srcRgb2);
+	waitKey();
+}
+
 void test20()
 {
 	test_measure_pos();
@@ -2750,6 +2805,8 @@ void test20()
 	test_line_detector();
 
 	test_circle_detector();
+
+	test_ellipse_detector();
 }
 #endif
 
@@ -3314,7 +3371,7 @@ int main()
 	//test19();
 
 	//(2)measurement
-	//test20();
+	test20();
 
 	//(3)morphology
 	//test_threshold();

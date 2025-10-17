@@ -40,6 +40,7 @@ extern "C" {
 	MWWZ_API void ppw_to_rr(double x1, double y1, double x2, double y2, double roiw, RRect& rr);//p1->p2, roiw:The entire caliper width
 	MWWZ_API int gen_measure_line(double x1, double y1, double x2, double y2, double len1, double len2, int dir, int distr, RRect*& pRr, int& num);
 	MWWZ_API int gen_measure_circle(double x0, double y0, double radius, double len1, double len2, int dir, int distr, RRect*& pRr, int& num);
+	MWWZ_API int gen_measure_ellipse(double x0, double y0, double angle, double ra, double rb, double len1, double len2, int dir, int distr, RRect*& pRr, int& num);
 	MWWZ_API int do_measure(unsigned char* pGray, int w, int h, double sigma, double thr, const char* sel, RRect* pRr, int num, double*& pRes, int& num2);
 	MWWZ_API int do_fit(double* points, int num, int mode, int method, float reps, int iters, int samples, double* pRes);
 	MWWZ_API int do_fit2(double* points, int num, ParaFit para, double* pRes);
