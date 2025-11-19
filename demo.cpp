@@ -1272,8 +1272,8 @@ int test9()
 
 	//寻找模板
 	int subpixel = 1;//0=none 1=interpolation 2=least-squares
-	int max_deformation = 8;//4 8 16 32,目前仅支持4的倍数
-	subpixel += max_deformation;
+	int max_deformation = 8;//0-32
+	subpixel += (max_deformation * 10);
 
 	double scale_min = 1;
 	double scale_max = 1;
