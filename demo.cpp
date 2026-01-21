@@ -1913,8 +1913,8 @@ int test14()
 
 	int contrast_low = 23;
 	int contrast_high = 31;
-	int min_contrast = 13;
 	int min_cont_len = 9;
+	int min_contrast = 13;	
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
 
 	int num_levels = 0;
