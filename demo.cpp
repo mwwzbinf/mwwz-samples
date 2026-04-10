@@ -206,6 +206,12 @@ int test()
 	int min_contrast = 10;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
 
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
+
 	int num_levels = 0;
 	int use_polarity = 1;
 
@@ -343,6 +349,12 @@ int test2()
 	int min_cont_len = 9;
 	int min_contrast = 6;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
+
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
 
 	int num_levels = 0;
 	int use_polarity = 1;
@@ -483,6 +495,12 @@ int test3()
 	int min_cont_len = 30;
 	int min_contrast = 10;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
+
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
 
 	int num_levels = 0;
 	int use_polarity = 1;
@@ -888,6 +906,12 @@ int test6()
 	int min_contrast = 10;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
 
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
+
 	int num_levels = 0;
 	int use_polarity = 1;
 
@@ -1075,6 +1099,12 @@ int test8()
 	int min_contrast = 10;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
 
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
+
 	int num_levels = 0;
 	int use_polarity = 1;
 
@@ -1202,6 +1232,12 @@ int test9()
 	int min_cont_len = 30;
 	int min_contrast = 6;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
+
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
 
 	int num_levels = 0;
 	int use_polarity = 1;
@@ -1344,6 +1380,12 @@ int test10()
 	int min_contrast = 10;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
 
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
+
 	int num_levels = 0;
 	int use_polarity = 1;
 
@@ -1485,6 +1527,12 @@ int test11()
 	int min_contrast = 5;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
 
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
+
 	int num_levels = 0;
 	int use_polarity = 1;
 
@@ -1621,6 +1669,12 @@ int test12()
 	int min_cont_len = 30;
 	int min_contrast = 10;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
+
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
 
 	int num_levels = 0;
 	int use_polarity = 1;
@@ -1923,6 +1977,12 @@ int test14()
 	vector<int> models;
 	for (int i = 0; i < model_num; i++)
 	{
+		//自动计算创建模板的参数
+		double T[4] = { 0 };
+		//auto_shape_model_params(vModel[0].ptr<uchar>(0), vModel[0].cols, vModel[0].rows, 0.75, &T[0]);
+		auto_shape_model_params2(vModel[i].ptr<uchar>(0), vModel[i].cols, vModel[i].rows, 0.75, &T[0]);
+		for (int j = 0; j < 4; j++) contrast[j] = static_cast<int>(T[j]);
+
 		int model_id = -1;
 		int err = create_shape_model(vModel[i].ptr<uchar>(0), vModel[i].cols, vModel[i].rows, num_levels, angle_start, angle_extent, angle_step, use_polarity, contrast, NULL, model_id);
 
@@ -1959,7 +2019,7 @@ int test14()
 	double greedness = 0.75;
 	int numMatches = 0;
 	vector<int> vnum_levels(model_num * 2, 0);
-	set_system("border_shape_models", 1);
+	//set_system("border_shape_models", 1);
 	
 	int nFound = 0;
 	Match* pMatches = NULL;
@@ -2010,6 +2070,12 @@ int test15()
 	int min_cont_len = 30;
 	int min_contrast = 10;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
+
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
 
 	int num_levels = 0;
 	int use_polarity = 1;
@@ -2154,6 +2220,12 @@ int test16()
 	int min_cont_len = 30;
 	int min_contrast = 10;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
+
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
 
 	int num_levels = 0;
 	int use_polarity = 1;
@@ -2303,6 +2375,12 @@ int test17()
 	int min_contrast = 10;
 	int contrast[4] = { contrast_low,contrast_high,min_cont_len ,min_contrast };
 
+	//自动计算创建模板的参数
+	double T[4] = { 0 };
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
+
 	int num_levels = 0;
 	int use_polarity = 1;
 
@@ -2412,7 +2490,8 @@ int test18()
 
 	//自动计算创建模板的参数
 	double T[4] = { 0 };
-	auto_shape_model_params(vModel[0].ptr<uchar>(0), vModel[0].cols, vModel[0].rows, 0.75, &T[0]);
+	//auto_shape_model_params(vModel[0].ptr<uchar>(0), vModel[0].cols, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(vModel[0].ptr<uchar>(0), vModel[0].cols, vModel[0].rows, 0.75, &T[0]);
 	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
 
 	int num_levels = 0;
@@ -2523,7 +2602,8 @@ int test19()
 
 	//自动计算创建模板的参数
 	double T[4] = { 0 };
-	auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
+	//auto_shape_model_params(model.ptr<uchar>(0), model.cols, model.rows, vModel[0].rows, 0.75, &T[0]);
+	auto_shape_model_params2(model.ptr<uchar>(0), model.cols, model.rows, 0.75, &T[0]);
 	for (int i = 0; i < 4; i++) contrast[i] = static_cast<int>(T[i]);
 
 	int num_levels = 0;
@@ -3360,15 +3440,24 @@ int main()
 	/*for (size_t i = 0; i < 100000; i++)
 		test();*/
 	//(1)shape match
-	//test();
-	//test2();
-	//test3();
-	//test4();
+	/*test();
+	test2();
+	test3();
+	test4();
+	test5();
+	test6();*/
+	//test7();//multi thread
+	/*test8();
+	test9();
+	test10();
+	test11();
+	test12();
+	test13();*/
 	test14();
-	//test15();
-	//test17();
-	//test18();
-	//test19();
+	/*test15();
+	test17();
+	test18();
+	test19();*/
 
 	//(2)measurement
 	test20();

@@ -71,7 +71,7 @@ namespace mwwz
 		dx = 0;
 		dy = 0;
 	}
-	inline Match::Match(int _x, int _y, float _score, float _angle, float _scale, int _label,char _polarity)
+	inline Match::Match(int _x, int _y, float _score, float _angle, float _scale, int _label, char _polarity)
 		: x(_x), y(_y), score(_score), angle(_angle), scale(_scale), label(_label), polarity(_polarity)
 	{
 		dx = 0;
@@ -185,6 +185,7 @@ namespace mwwz
 	MWWZ_API int fnmwwz(void);
 	MWWZ_API int init_mwwz();
 	MWWZ_API int init_mwwz_lic(const char* str_lic);
+	MWWZ_API int release_mwwz();
 	MWWZ_API void set_system(const char* paramName, int paramValue);
 	MWWZ_API int edges_sub_pix_gray(unsigned char* pGray, int w, int h, int ksize, float lowThresh, float highThresh, int min_cont_len, int gap, std::vector<Feature>& features, unsigned char* pMask = NULL);
 	MWWZ_API int find_sub_pix_contours(unsigned char* pGray, int w, int h, int ksize, int bw, float lowThresh, float highThresh, int min_cont_len, int gap, std::vector<std::vector<Feature>>& contours, unsigned char* pMask = NULL);
@@ -202,6 +203,7 @@ namespace mwwz
 	MWWZ_API int read_shape_model_b(char* pModel, int len, int& model_id);
 	MWWZ_API int get_rot_img(unsigned char* pGray, int w, int h, int method, double xc, double yc, double angle, unsigned char* pDst, int w2, int h2);
 	MWWZ_API void auto_shape_model_params(unsigned char* pGray, int w, int h, double ratio, double* T);
+	MWWZ_API void auto_shape_model_params2(unsigned char* pGray, int w, int h, double ratio, double* T, int level = 0);
 
 	MWWZ_API int create_shape_model(unsigned char* pGray, int w, int h, int num_levels, float angle_start, float angle_extent, float angle_step, int use_polarity, int* contrast, unsigned char* pMask, int& model_id);
 	MWWZ_API int create_shape_model_rr(unsigned char* pGray, int w, int h, double xc, double yc, double angle, double len1, double len2, int num_levels, float angle_start, float angle_extent, float angle_step, int use_polarity, int* contrast, unsigned char* pMask, int& model_id);
@@ -215,7 +217,7 @@ namespace mwwz
 	MWWZ_API int find_aniso_shape_model_2(unsigned char* pGray, int w, int h, int model_id, float angle_start, float angle_extent, float scale_rmin, float scale_rmax, float scale_cmin, float scale_cmax, float minScore, int numMatches, float maxOverLap, int subpixel, int* numLevels, float greediness, unsigned char* pMask, Match*& pMatches, int& nFound);
 	MWWZ_API int find_shape_models_2(unsigned char* pGray, int w, int h, int* model_id, int model_num, float angle_start, float angle_extent, float minScore, int numMatches, float maxOverLap, int subpixel, int* numLevels, float greediness, unsigned char* pMask, Match*& pMatches, int& nFound);
 
-	MWWZ_API int find_shape_model_xl(unsigned char* pGray, int w, int h, int* div, int model_id, float angle_start, float angle_extent, float minScore, int numMatches, float maxOverLap, int subpixel, int* numLevels, float greediness,float dsame, Match*& pMatches, int& nFound);
+	MWWZ_API int find_shape_model_xl(unsigned char* pGray, int w, int h, int* div, int model_id, float angle_start, float angle_extent, float minScore, int numMatches, float maxOverLap, int subpixel, int* numLevels, float greediness, float dsame, Match*& pMatches, int& nFound);
 	MWWZ_API int find_shape_models_xl(unsigned char* pGray, int w, int h, int* div, int* model_id, int model_num, float angle_start, float angle_extent, float minScore, int numMatches, float maxOverLap, int subpixel, int* numLevels, float greediness, float dsame, Match*& pMatches, int& nFound);
 	MWWZ_API int get_match_details(unsigned char* pGray, int w, int h, float minMag, Match* pMatches, int nFound, MatchDetails*& pDetails);
 	MWWZ_API int get_match_details2(unsigned char* pGray, int w, int h, float minMag, Match* pMatches, int nFound, unsigned char* pMask, MatchDetails*& pDetails);
